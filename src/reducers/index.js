@@ -1,7 +1,9 @@
 import contactReducer from "./contact";
 
 const initialState = {
-
+    getContactResult: false,
+    getContactLoading: false,
+    getContactError: false
 }
 
 const combineReducers = (reducers) => {
