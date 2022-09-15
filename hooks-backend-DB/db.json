@@ -1,0 +1,14 @@
+{
+    "contacts": [
+        {
+            "id": 1,
+            "nama": "Budi Sudarsono",
+            "noHP": "0878 7342 343423"
+        },
+        {
+            "id": 2,
+            "nama": "Eko Sujimo",
+            "noHP": "0878 7382 2922"
+        }
+    ]
+}
