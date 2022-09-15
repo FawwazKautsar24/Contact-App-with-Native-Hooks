@@ -6,6 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `json-server --watch hooks-backend-DB/db.json`
+
+Runs the server from db.json in the development mode.\
+Open [http://localhost:3000/contacts](http://localhost:3000/contacts) to view it in your browser. 
+
 ### `npm start`
 
 Runs the app in the development mode.\
