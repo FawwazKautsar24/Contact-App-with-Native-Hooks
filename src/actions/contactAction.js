@@ -1,10 +1,10 @@
 import axios from "axios";
 
 export const GET_CONTACT_LIST = 'GET_CONTACT_LIST';
-export const ADD_CONTACT_LIST = 'ADD_CONTACT_LIST';
 
 export const getContactList = (dispatch) => {
     // loading
+    console.log('2. Masuk Action');
     dispatch({
         type: GET_CONTACT_LIST,
         payload: {
@@ -20,6 +20,7 @@ export const getContactList = (dispatch) => {
         timeout: 120000
     })
         .then((response) => {
+            console.log('3. Berhasil Get : ', response);
             dispatch({
                 type: GET_CONTACT_LIST,
                 payload: {
@@ -30,6 +31,7 @@ export const getContactList = (dispatch) => {
             });
         })
         .catch((error) => {
+            console.log('3. Gagal Get : ', error);
             dispatch({
                 type: GET_CONTACT_LIST,
                 payload: {

@@ -5,6 +5,7 @@ const contact = (state, action) => {
 
     switch(type){
         case GET_CONTACT_LIST: 
+            console.log('4. Masuk Reducer : ', action);
             return {
                 ...state,
                 getContactResult: action.payload.data,
@@ -20,7 +21,7 @@ const contact = (state, action) => {
                 addContactLoading: action.payload.loading,
                 addContactError: action.payload.errorMessage,
             }
-        
+            
         default: 
             return state;
     }
