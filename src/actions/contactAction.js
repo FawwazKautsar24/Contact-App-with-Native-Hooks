@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const GET_CONTACT_LIST = 'GET_CONTACT_LIST';
+export const ADD_CONTACT_LIST = 'ADD_CONTACT_LIST';
 
 export const getContactList = (dispatch) => {
     // loading
