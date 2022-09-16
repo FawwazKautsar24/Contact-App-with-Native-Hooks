@@ -1,4 +1,4 @@
-import { GET_CONTACT_LIST } from "../../actions/contactAction";
+import { GET_CONTACT_LIST, ADD_CONTACT_LIST } from "../../actions/contactAction";
 
 const contact = (state, action) => {
     const { type } = action;
@@ -13,6 +13,15 @@ const contact = (state, action) => {
                 getContactError: action.payload.errorMessage,
             }
         
+        case ADD_CONTACT_LIST: 
+            console.log('4. Masuk Reducer : ', action);
+            return {
+                ...state,
+                addContactResult: action.payload.data,
+                addContactLoading: action.payload.loading,
+                addContactError: action.payload.errorMessage,
+            }
+            
         default: 
             return state;
     }

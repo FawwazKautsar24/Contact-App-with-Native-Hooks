@@ -42,3 +42,45 @@ export const getContactList = (dispatch) => {
             });
         })
 }
+
+export const addContact = (dispatch, data) => {
+    // loading
+    console.log('2. Masuk Action');
+    dispatch({
+        type: ADD_CONTACT_LIST,
+        payload: {
+            loading: true,
+            data: false,
+            errorMessage: false
+        }
+    });
+
+    axios({
+        method: 'POST',
+        url: `http://localhost:3000/contacts`,
+        timeout: 120000,
+        data: data
+    })
+        .then((response) => {
+            console.log('3. Berhasil Add : ', response);
+            dispatch({
+                type: ADD_CONTACT_LIST,
+                payload: {
+                    loading: false,
+                    data: response.data,
+                    errorMessage: false
+                }
+            });
+        })
+        .catch((error) => {
+            console.log('3. Gagal Add : ', error);
+            dispatch({
+                type: ADD_CONTACT_LIST,
+                payload: {
+                    loading: false,
+                    data: false,
+                    errorMessage: error.message
+                }
+            });
+        })
+}
