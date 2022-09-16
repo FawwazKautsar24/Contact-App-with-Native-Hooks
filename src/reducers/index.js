@@ -3,7 +3,11 @@ import contactReducer from "./contact";
 const initialState = {
     getContactResult: false,
     getContactLoading: false,
-    getContactError: false
+    getContactError: false,
+    
+    addContactResult: false,
+    addContactLoading: false,
+    addContactError: false
 }
 
 const combineReducers = (reducers) => {

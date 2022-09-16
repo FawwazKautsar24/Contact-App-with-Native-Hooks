@@ -8,7 +8,6 @@ function ListContact(){
     const { getContactResult, getContactLoading, getContactError } = state;
 
     useEffect(() => {
-        console.log('1. ComponentDidMount getContactList');
         getContactList(dispatch);
     }, [dispatch]);
     
