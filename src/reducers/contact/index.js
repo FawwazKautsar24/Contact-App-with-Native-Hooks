@@ -1,11 +1,10 @@
-import { GET_CONTACT_LIST, ADD_CONTACT_LIST } from "../../actions/contactAction";
+import { GET_CONTACT_LIST, ADD_CONTACT_LIST, DELETE_CONTACT_LIST } from "../../actions/contactAction";
 
 const contact = (state, action) => {
     const { type } = action;
 
     switch(type){
         case GET_CONTACT_LIST: 
-            console.log('4. Masuk Reducer : ', action);
             return {
                 ...state,
                 getContactResult: action.payload.data,
@@ -14,14 +13,22 @@ const contact = (state, action) => {
             }
         
         case ADD_CONTACT_LIST: 
-            console.log('4. Masuk Reducer : ', action);
             return {
                 ...state,
                 addContactResult: action.payload.data,
                 addContactLoading: action.payload.loading,
                 addContactError: action.payload.errorMessage,
             }
-            
+
+        case DELETE_CONTACT_LIST: 
+            console.log('4. Masuk Reducer : ', action);
+            return {
+                ...state,
+                deleteContactResult: action.payload.data,
+                deleteContactLoading: action.payload.loading,
+                deleteContactError: action.payload.errorMessage,
+            }
+        
         default: 
             return state;
     }
