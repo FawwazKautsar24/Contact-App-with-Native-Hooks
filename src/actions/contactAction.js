@@ -2,10 +2,10 @@ import axios from "axios";
 
 export const GET_CONTACT_LIST = 'GET_CONTACT_LIST';
 export const ADD_CONTACT_LIST = 'ADD_CONTACT_LIST';
+export const DELETE_CONTACT_LIST = 'DELETE_CONTACT_LIST';
 
 export const getContactList = (dispatch) => {
     // loading
-    console.log('2. Masuk Action');
     dispatch({
         type: GET_CONTACT_LIST,
         payload: {
@@ -21,7 +21,6 @@ export const getContactList = (dispatch) => {
         timeout: 120000
     })
         .then((response) => {
-            console.log('3. Berhasil Get : ', response);
             dispatch({
                 type: GET_CONTACT_LIST,
                 payload: {
@@ -32,7 +31,6 @@ export const getContactList = (dispatch) => {
             });
         })
         .catch((error) => {
-            console.log('3. Gagal Get : ', error);
             dispatch({
                 type: GET_CONTACT_LIST,
                 payload: {
@@ -46,7 +44,6 @@ export const getContactList = (dispatch) => {
 
 export const addContact = (dispatch, data) => {
     // loading
-    console.log('2. Masuk Action');
     dispatch({
         type: ADD_CONTACT_LIST,
         payload: {
@@ -63,7 +60,6 @@ export const addContact = (dispatch, data) => {
         data: data
     })
         .then((response) => {
-            console.log('3. Berhasil Add : ', response);
             dispatch({
                 type: ADD_CONTACT_LIST,
                 payload: {
@@ -74,9 +70,49 @@ export const addContact = (dispatch, data) => {
             });
         })
         .catch((error) => {
-            console.log('3. Gagal Add : ', error);
             dispatch({
                 type: ADD_CONTACT_LIST,
+                payload: {
+                    loading: false,
+                    data: false,
+                    errorMessage: error.message
+                }
+            });
+        })
+}
+
+export const deleteContact = (dispatch, id) => {
+    // loading
+    console.log('2. Masuk Action');
+    dispatch({
+        type: DELETE_CONTACT_LIST,
+        payload: {
+            loading: true,
+            data: false,
+            errorMessage: false
+        }
+    });
+
+    axios({
+        method: 'DELETE',
+        url: `http://localhost:3000/contacts/${id}`,
+        timeout: 120000
+    })
+        .then((response) => {
+            console.log('3. Berhasil Delete : ', response);
+            dispatch({
+                type: DELETE_CONTACT_LIST,
+                payload: {
+                    loading: false,
+                    data: response.data,
+                    errorMessage: false
+                }
+            });
+        })
+        .catch((error) => {
+            console.log('3. Gagal Delete : ', error);
+            dispatch({
+                type: DELETE_CONTACT_LIST,
                 payload: {
                     loading: false,
                     data: false,
