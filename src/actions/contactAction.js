@@ -3,6 +3,8 @@ import axios from "axios";
 export const GET_CONTACT_LIST = 'GET_CONTACT_LIST';
 export const ADD_CONTACT_LIST = 'ADD_CONTACT_LIST';
 export const DELETE_CONTACT_LIST = 'DELETE_CONTACT_LIST';
+export const GET_EDIT_CONTACT = 'GET_EDIT_CONTACT';
+export const EDIT_CONTACT = 'EDIT_CONTACT';
 
 export const getContactList = (dispatch) => {
     // loading
@@ -83,7 +85,6 @@ export const addContact = (dispatch, data) => {
 
 export const deleteContact = (dispatch, id) => {
     // loading
-    console.log('2. Masuk Action');
     dispatch({
         type: DELETE_CONTACT_LIST,
         payload: {
@@ -99,7 +100,6 @@ export const deleteContact = (dispatch, id) => {
         timeout: 120000
     })
         .then((response) => {
-            console.log('3. Berhasil Delete : ', response);
             dispatch({
                 type: DELETE_CONTACT_LIST,
                 payload: {
@@ -110,9 +110,61 @@ export const deleteContact = (dispatch, id) => {
             });
         })
         .catch((error) => {
-            console.log('3. Gagal Delete : ', error);
             dispatch({
                 type: DELETE_CONTACT_LIST,
+                payload: {
+                    loading: false,
+                    data: false,
+                    errorMessage: error.message
+                }
+            });
+        })
+}
+
+export const getEditContact = (dispatch, data) => {
+    // loading
+    console.log('1. Masuk Action (getEditContact)');
+    dispatch({
+        type: GET_EDIT_CONTACT,
+        payload: {
+            data: data
+        }
+    });
+}
+
+export const editContact = (dispatch, data) => {
+    // loading
+    console.log('5. Masuk Action (editContact)');
+    dispatch({
+        type: EDIT_CONTACT,
+        payload: {
+            loading: true,
+            data: false,
+            errorMessage: false
+        }
+    });
+
+    axios({
+        method: 'PUT',
+        url: `http://localhost:3000/contacts/${data.id}`,
+        timeout: 120000,
+        data: data
+    })
+        .then((response) => {
+            console.log('6. Berhasil Edit : ', response.data);
+            dispatch({
+                type: EDIT_CONTACT,
+                payload: {
+                    loading: false,
+                    data: response.data,
+                    errorMessage: false
+                }
+            });
+        })
+        .catch((error) => {
+            console.log('6. Gagal Edit : ', error.message);
+            dispatch({
+                type: EDIT_CONTACT,
                 payload: {
                     loading: false,
                     data: false,

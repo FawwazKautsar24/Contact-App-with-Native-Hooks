@@ -11,7 +11,13 @@ const initialState = {
     
     deleteContactResult: false,
     deleteContactLoading: false,
-    deleteContactError: false
+    deleteContactError: false,
+    
+    getEditContactResult: false,
+    
+    editContactResult: false,
+    editContactLoading: false,
+    editContactError: false,
 }
 
 const combineReducers = (reducers) => {

@@ -1,4 +1,4 @@
-import { GET_CONTACT_LIST, ADD_CONTACT_LIST, DELETE_CONTACT_LIST } from "../../actions/contactAction";
+import { GET_CONTACT_LIST, ADD_CONTACT_LIST, DELETE_CONTACT_LIST, GET_EDIT_CONTACT, EDIT_CONTACT } from "../../actions/contactAction";
 
 const contact = (state, action) => {
     const { type } = action;
@@ -21,12 +21,27 @@ const contact = (state, action) => {
             }
 
         case DELETE_CONTACT_LIST: 
-            console.log('4. Masuk Reducer : ', action);
             return {
                 ...state,
                 deleteContactResult: action.payload.data,
                 deleteContactLoading: action.payload.loading,
                 deleteContactError: action.payload.errorMessage,
+            }
+        
+        case GET_EDIT_CONTACT: 
+            console.log('2. Masuk Reducer (getEditContact) : ', action);
+            return {
+                ...state,
+                getEditContactResult: action.payload.data,
+            }
+            
+            case EDIT_CONTACT: 
+            console.log('7. Masuk Reducer (editContact) : ', action);
+            return {
+                ...state,
+                editContactResult: action.payload.data,
+                editContactLoading: action.payload.loading,
+                editContactError: action.payload.errorMessage,
             }
         
         default: 
