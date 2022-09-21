@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getContactList, deleteContact } from "../../actions/contactAction";
+import { getContactList, deleteContact, getEditContact } from "../../actions/contactAction";
 import { useAppState } from "../../contexts/appState";
 // import { getContactResult, getContactLoading, getContactError } from '../../reducers';
 
@@ -8,13 +8,12 @@ function ListContact(){
     const { getContactResult, getContactLoading, getContactError, deleteContactResult } = state;
 
     useEffect(() => {
-        console.log('1. Masuk ComponentDidMount');
+        console.log('0. Masuk ComponentDidMount');
         getContactList(dispatch);
     }, [dispatch]);
     
     useEffect(() => {
         if(deleteContactResult){
-            console.log('5. Masuk ComponentDidUpdate');
             getContactList(dispatch);
         }
     }, [dispatch, deleteContactResult]);
@@ -28,7 +27,8 @@ function ListContact(){
                         <p key={contact.id}>
                             {contact.nama} - 
                             {contact.noHP} - 
-                            <button onClick={() => deleteContact(dispatch, contact.id)}>Delete</button>
+                            <button style={{ margin: "0 7px" }} onClick={() => deleteContact(dispatch, contact.id)}>Delete</button>
+                            <button onClick={() => getEditContact(dispatch, contact)}>Edit</button>
                         </p>
                     )
                 })
