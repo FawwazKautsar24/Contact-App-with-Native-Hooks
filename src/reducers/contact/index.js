@@ -29,14 +29,12 @@ const contact = (state, action) => {
             }
         
         case GET_EDIT_CONTACT: 
-            console.log('2. Masuk Reducer (getEditContact) : ', action);
             return {
                 ...state,
                 getEditContactResult: action.payload.data,
             }
             
             case EDIT_CONTACT: 
-            console.log('7. Masuk Reducer (editContact) : ', action);
             return {
                 ...state,
                 editContactResult: action.payload.data,
