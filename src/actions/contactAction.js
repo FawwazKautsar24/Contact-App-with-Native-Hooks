@@ -123,7 +123,6 @@ export const deleteContact = (dispatch, id) => {
 
 export const getEditContact = (dispatch, data) => {
     // loading
-    console.log('1. Masuk Action (getEditContact)');
     dispatch({
         type: GET_EDIT_CONTACT,
         payload: {
@@ -134,7 +133,6 @@ export const getEditContact = (dispatch, data) => {
 
 export const editContact = (dispatch, data) => {
     // loading
-    console.log('5. Masuk Action (editContact)');
     dispatch({
         type: EDIT_CONTACT,
         payload: {
@@ -151,7 +149,6 @@ export const editContact = (dispatch, data) => {
         data: data
     })
         .then((response) => {
-            console.log('6. Berhasil Edit : ', response.data);
             dispatch({
                 type: EDIT_CONTACT,
                 payload: {
@@ -162,7 +159,6 @@ export const editContact = (dispatch, data) => {
             });
         })
         .catch((error) => {
-            console.log('6. Gagal Edit : ', error.message);
             dispatch({
                 type: EDIT_CONTACT,
                 payload: {

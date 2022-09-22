@@ -12,7 +12,6 @@ function FormContact(){
     const { addContactResult, getEditContactResult, editContactResult } = state;
     
     const handleSubmit = (e) => {
-        console.log('4. Masuk Handle Submit');
         e.preventDefault();
 
         if(id){
@@ -34,7 +33,6 @@ function FormContact(){
     // get edit data contact
     useEffect(() => {
         if(getEditContactResult){
-            console.log('3. Update state nama, noHP, id dari Global State (Reducer)');
             setNama(getEditContactResult.nama);
             setNoHP(getEditContactResult.noHP);
             setId(getEditContactResult.id);
@@ -44,7 +42,6 @@ function FormContact(){
     // edit contact
     useEffect(() => {
         if(editContactResult){
-            console.log('8. Masuk ComponentDidpdate');
             getContactList(dispatch);
             setNama('');
             setNoHP('');
